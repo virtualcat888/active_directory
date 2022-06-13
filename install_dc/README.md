@@ -11,3 +11,9 @@
 ```shell
 Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
 ```
+
+3. List/Add Windows trusted hosts
+```shell
+Get-Item wsman:\localhost\Client\TrustedHosts
+Set-Item wsman:\localhost\Client\TrustedHosts -Value <ip-address/host>
+```
