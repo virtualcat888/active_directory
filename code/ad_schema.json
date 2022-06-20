@@ -1,0 +1,26 @@
+{
+    "domain": "VirtualKnights.local",
+
+    "groups": [
+        {
+            "name": "Engineering"
+        }
+    ],
+
+    "users": [
+        {
+            "name": "Wayne Zhang",
+            "password": "Test123",
+            "groups": [
+                "Engineering"
+            ]
+        },
+        {
+            "name": "Zion Zhang",
+            "password": "Test123",
+            "groups": [
+                "Engineering"
+            ]
+        }
+    ]
+}
