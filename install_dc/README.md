@@ -9,12 +9,17 @@ References: https://xpertstec.com/how-to-install-active-directory-windows-server
     - Change the DNS server to our own IP address
 
 2. Install the Active Directory Windows Feature
-
 ```shell
 Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
 ```
 
-3. Import ADDS module and Install first domain controller in new forest
+3. Get IP address and change DNS server IP
+'''
+Get-NetIPAddress
+Set-DnsClientServerAddress -InterfaceIndex 4 -ServerAddresses <ip-address>
+'''
+
+4. Import ADDS module and Install first domain controller in new forest
 ```shell
 Import-Module ADDSDeployment
 Install-ADDSForest
