@@ -9,7 +9,7 @@ $passwords = [System.Collections.ArrayList](Get-Content "data/rockyou-top15k.txt
 $groups = @()
 $users = @()
 
-$num_groups = 10
+$num_groups = 5
 
 for ($i = 0; $i -lt $num_groups; $i++) {
     $group_name = (Get-Random -InputObject $group_names)
@@ -18,7 +18,7 @@ for ($i = 0; $i -lt $num_groups; $i++) {
     $group_names.Remove($group_name)
 }
 
-$num_users = 100
+$num_users = 5
 
 for ($i = 0; $i -lt $num_users; $i++) {
     $first_name = (Get-Random -InputObject $first_names)

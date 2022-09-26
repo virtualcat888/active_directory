@@ -47,3 +47,4 @@ foreach ( $group in $json.groups ){
 foreach ( $user in $json.users ){
     CreateADUser $user
 }
+
