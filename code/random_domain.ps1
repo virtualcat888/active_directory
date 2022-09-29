@@ -1,24 +1,29 @@
 param( [Parameter(Mandatory=$true)] $OutputJSONFILE )
 
-
+# Create Array variables that reads data from txt file 
 $group_names = [System.Collections.ArrayList](Get-Content "data/group_names.txt")
 $first_names = [System.Collections.ArrayList](Get-Content "data/first_names.txt")
 $last_names = [System.Collections.ArrayList](Get-Content "data/last_names.txt")
 $passwords = [System.Collections.ArrayList](Get-Content "data/rockyou-top15k.txt")
 
+# Create empty Array to store data
 $groups = @()
 $users = @()
 
-$num_groups = 5
+$num_groups = 3
 
 for ($i = 0; $i -lt $num_groups; $i++) {
-    $group_name = (Get-Random -InputObject $group_names)
-    $group = @{ "name" = "$group_name" }
-    $groups += $group
-    $group_names.Remove($group_name)
+    # randomly pulls data from $group_names variable
+    $data = (Get-Random -InputObject $group_names)
+    # Converts $data to hashtable with key = "name" and value = "$data"
+    $hash_data = @{ "name" = "$data" }
+    # Adds $hash_data to $groups Array 
+    $groups += $hash_data
+    # Removes $data from $group_names pool to prevent duplicates 
+    $group_names.Remove($data)
 }
 
-$num_users = 5
+$num_users = 3
 
 for ($i = 0; $i -lt $num_users; $i++) {
     $first_name = (Get-Random -InputObject $first_names)
@@ -35,8 +40,9 @@ for ($i = 0; $i -lt $num_users; $i++) {
     $passwords.Remove($password)
 }
 
+# Write data to JSON format and save to $OutputJSONFILE
 echo @{
-       "domain" = "virtualknights.local"
+       "domain" = "VirtualKnights.local"
        "groups" = $groups
        "users" = $users
 } | ConvertTo-Json | Out-File $OutputJSONFILE

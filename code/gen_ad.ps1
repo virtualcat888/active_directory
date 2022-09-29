@@ -6,6 +6,7 @@ function CreateADGroup() {
     param( [Parameter(Mandatory=$true)] $groupObject )
 
     $name = $groupObject.name
+    # PS cmlet to create AD group with global scope
     New-ADGroup -name $name -GroupScope Global
 }
 
